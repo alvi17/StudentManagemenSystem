@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:weightSum="5"
+    android:padding="5dp"
+    android:gravity="center"
+    android:id="@+id/batch_attendance_list_item_mainlayout">
+
+
+    <TextView
+        android:id="@+id/attendance_list_item_nametextView8"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="3.4"
+        android:text="TextView"
+        android:textSize="18dp"
+        android:padding="5dp"
+        />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/ic_check_black_24dp"
+        android:layout_weight=".8"
+        android:id="@+id/batch_present"
+        android:padding="5dp"
+        />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/ic_close_black_24dp"
+        android:layout_weight=".8"
+        android:id="@+id/batch_absent"
+        android:padding="5dp"
+        />
+
+</LinearLayout>

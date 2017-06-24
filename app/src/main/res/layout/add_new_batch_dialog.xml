@@ -4,7 +4,103 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    
 
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="New Batch"
+        android:textSize="@dimen/header_text_size"
+        android:gravity="center_horizontal"
+        android:padding="10dp"
+        android:textColor="@color/header_text_color"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Batch Name: "
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:textColor="@color/label_text_color"
+        />
+
+    <EditText
+        android:id="@+id/batchname_editText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:padding="10dp"
+        android:inputType="textPersonName"
+        android:hint="Batch Name" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="School/College Name: "
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/label_text_color"
+        />
+    <EditText
+        android:id="@+id/collegename_editText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:padding="10dp"
+        android:inputType="textPersonName"
+        android:hint="School/College Name"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Batch Year: "
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/label_text_color"
+        />
+
+    <EditText
+        android:id="@+id/batchyear_editText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:padding="10dp"
+        android:inputType="number"
+        android:hint="School/College Name"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Starting Date: "
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/label_text_color"
+        />
+
+    <EditText
+        android:id="@+id/batchstart_editText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:padding="10dp"
+        android:inputType="date"
+        android:hint="School/College Name"
+        />
+
+    <Button
+        android:id="@+id/add_new_batch_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Add"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        />
 
 </LinearLayout>

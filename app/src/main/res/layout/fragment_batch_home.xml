@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Batch Name"
+            android:gravity="center_horizontal"
+            android:padding="10dp"
+            android:textColor="@color/header_text_color"
+            android:textSize="@dimen/header_text_size"
+            android:id="@+id/batch_main_batch_name"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="College name"
+            android:id="@+id/batch_main_college_name"
+            android:padding="5dp"
+            android:gravity="center_horizontal"
+            />
+
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/batch_student_listview"
+            >
+
+
+
+        </ListView>
+
+    </LinearLayout>
