@@ -1,6 +1,7 @@
 package alvi17.studentmanagementsystem.fragments;
 
 import android.app.Dialog;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -11,6 +12,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -22,6 +24,7 @@ import java.util.Date;
 
 import alvi17.studentmanagementsystem.DBHelper.DatabaseHelper;
 import alvi17.studentmanagementsystem.R;
+import alvi17.studentmanagementsystem.Student_Details_Acctivity;
 import alvi17.studentmanagementsystem.Util;
 import alvi17.studentmanagementsystem.adapters.Batch_Student_ListAdapter;
 
@@ -40,6 +43,7 @@ public class BatchHomeFragment extends android.support.v4.app.Fragment{
     DatabaseHelper databaseHelper ;
     Batch_Student_ListAdapter batch_student_listAdapter;
 
+    ArrayList<Integer> student_ids;
 
     public BatchHomeFragment()
     {
@@ -69,6 +73,7 @@ public class BatchHomeFragment extends android.support.v4.app.Fragment{
         if(databaseHelper==null) {
             databaseHelper = new DatabaseHelper(getActivity());
         }
+        student_ids=new ArrayList<>();
         setBatchList();
 
 
@@ -79,14 +84,41 @@ public class BatchHomeFragment extends android.support.v4.app.Fragment{
     {
 
         ArrayList<String> names=databaseHelper.getAllStudetsForBatch(batch_id);
-        if(batch_student_listAdapter==null) {
+        student_ids=databaseHelper.getAllStudetsIdsForBatch(batch_id);
+
+        if(batch_student_listAdapter==null)
+        {
             batch_student_listAdapter = new Batch_Student_ListAdapter(getActivity(), names);
             batch_studentListview.setAdapter(batch_student_listAdapter);
         }
-        else{
+        else
+        {
             batch_student_listAdapter.setStudents(getActivity(),names);
             batch_student_listAdapter.notifyDataSetChanged();
         }
+
+        batch_studentListview.setOnItemClickListener(new AdapterView.OnItemClickListener()
+        {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id)
+            {
+                Intent intent=new Intent(getActivity(), Student_Details_Acctivity.class);
+                intent.putExtra("ID",student_ids.get(position));
+                startActivity(intent);
+
+            }
+        });
+
+        batch_studentListview.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener()
+        {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id)
+            {
+                databaseHelper.deleteFromStudentTable(student_ids.get(position));
+                setBatchList();
+                return true;
+            }
+        });
 
     }
 

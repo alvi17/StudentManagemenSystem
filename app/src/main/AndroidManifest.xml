@@ -24,6 +24,8 @@
         <activity
             android:name=".BatchMainActivity"
             android:label="@string/title_activity_batch_main"></activity>
+
+        <activity android:name=".Student_Details_Acctivity"/>
     </application>
 
 </manifest>

@@ -7,9 +7,11 @@ package alvi17.studentmanagementsystem;
 public class Student {
 
     String name,college,batch,admission_date,mobile;
+    int id;
 
-    public Student(String name,String college,String batch,String adimission_date,String mobile)
+    public Student(Integer id,String name,String college,String batch,String adimission_date,String mobile)
     {
+        this.id=id;
         this.name=name;
         this.college=college;
         this.batch=batch;

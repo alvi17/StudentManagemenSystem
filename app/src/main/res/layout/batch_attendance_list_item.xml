@@ -7,7 +7,8 @@
     android:weightSum="5"
     android:padding="5dp"
     android:gravity="center"
-    android:id="@+id/batch_attendance_list_item_mainlayout">
+    android:id="@+id/batch_attendance_list_item_mainlayout"
+    >
 
 
     <TextView

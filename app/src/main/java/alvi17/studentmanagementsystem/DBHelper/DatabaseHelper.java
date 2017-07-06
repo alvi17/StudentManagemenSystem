@@ -10,6 +10,7 @@ import android.util.Log;
 import java.util.ArrayList;
 
 import alvi17.studentmanagementsystem.Batch;
+import alvi17.studentmanagementsystem.Payments;
 
 /**
  * Created by User on 6/16/2017.
@@ -117,6 +118,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     }
 
+    public void deleteFromStudentTable(int student_id)
+    {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete("student","id="+student_id,null);
+        Log.e("DBHelper","Student deleted: "+student_id);
+        db.close();
+    }
+
 
     public ArrayList<String> getAllMobileForBatch(int batch_id)
     {
@@ -174,6 +183,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 //                    res.getString(res.getColumnIndex("starting_date")),res.getString(res.getColumnIndex("farewell_date"))
 //            );
 //            array_list.add(batch);
+
             array_list.add(res.getInt(res.getColumnIndex("id")));
             res.moveToNext();
 
@@ -212,6 +222,59 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     {
         return null;
     }
+
+
+    public void createPaymentsTable()
+    {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.execSQL("DROP table if exists payments");
+        db.execSQL("create table payments (id integer primary key autoincrement,student_id integer," +
+                "payment_month date,payment_type text,payment_amount integer,payment_date date)");
+        Log.e("DBHelper","payment table created");
+        db.close();
+    }
+
+    public void insertIntoPaymentTable(int student_id,String payment_month,String type,int amount,String payment_date)
+    {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("student_id",student_id);
+        contentValues.put("payment_month",payment_month);
+        contentValues.put("payment_amount",amount);
+        contentValues.put("payment_type",type);
+        contentValues.put("payment_date",payment_date);
+        db.insert("payments",null,contentValues);
+        db.close();
+        Log.e("DBHelper","payment info inserted: "+student_id+" "+payment_month+" "+type+" "+amount);
+    }
+
+    public ArrayList<Payments> getPaymentsInfoforStudent(int student_id)
+    {
+        ArrayList<Payments> payments;
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor res =  db.rawQuery( "select * from student where student_id="+student_id+" order by name desc", null );
+        res.moveToFirst();
+
+        if(res.getCount()>0) {
+            payments=new ArrayList<>();
+            while (!res.isAfterLast()) {
+                Payments temp=new Payments(res.getInt(res.getColumnIndex("student_id")),res.getString(res.getColumnIndex("payment_month")),
+                        res.getString(res.getColumnIndex("payment_type")),res.getString(res.getColumnIndex("payment_date")),res.getInt(res.getColumnIndex("payment_amount")));
+                payments.add(temp);
+                res.moveToNext();
+            }
+            res.close();
+            return payments;
+        }
+        else
+        {
+            res.close();
+            return null;
+        }
+    }
+
+
+
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {

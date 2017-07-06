@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp"
+    >
+
+
+    <TextView
+        android:id="@+id/stuent_details_nametextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Name"
+        android:textSize="20dp"
+        android:gravity="center_horizontal"
+        android:padding="5dp"
+        />
+
+    <TextView
+        android:id="@+id/student_details_collegenametextView11"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="College name"
+        android:gravity="center_horizontal"
+        />
+
+    <TextView
+        android:id="@+id/student_details_admissiondatetextView11"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Admission date"
+        android:gravity="center_horizontal"
+        android:padding="5dp"
+        />
+
+
+
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="5"
+        >
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="3"
+            android:text="Payment History"
+            android:textSize="20dp"
+            android:padding="5dp"
+            android:gravity="center_vertical"
+            />
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:text="Payment"
+            android:layout_weight="2"
+            android:textAllCaps="false"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:id="@+id/student_details_payment_button"
+            />
+    </LinearLayout>
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:stretchColumns="0,1,2"
+        android:layout_marginTop="10dp"
+        android:id="@+id/payment_tablelayout"
+        >
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_column="0"
+                android:text="Date"
+                android:layout_gravity="center"
+
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_column="1"
+                android:text="Amount"
+                android:layout_gravity="center"
+
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_column="2"
+                android:text="Type"
+                android:layout_gravity="center"
+
+                />
+        </TableRow>
+
+
+
+
+
+    </TableLayout>
+
+
+</LinearLayout>
